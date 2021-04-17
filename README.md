@@ -33,4 +33,3 @@ User 1 must
 
 Click on the "Зашифровать" button to encrypt  
 Click on the "Расшифровать" button to decrypt
-The file with the decrypted data will be created in the current directory  
