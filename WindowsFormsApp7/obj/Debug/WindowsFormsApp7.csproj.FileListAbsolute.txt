@@ -8,3 +8,13 @@ C:\Users\Влад\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\Debug\Windo
 C:\Users\Влад\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.csproj.CoreCompileInputs.cache
 C:\Users\Влад\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.exe
 C:\Users\Влад\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.pdb
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.csprojAssemblyReference.cache
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.Form1.resources
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.Properties.Resources.resources
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.csproj.GenerateResource.cache
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.csproj.CoreCompileInputs.cache
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.exe
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\obj\Debug\WindowsFormsApp7.pdb
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\bin\Debug\WindowsFormsApp7.exe.config
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\bin\Debug\WindowsFormsApp7.exe
+D:\Hobby\program\CryptoGraph\WindowsFormsApp7\bin\Debug\WindowsFormsApp7.pdb

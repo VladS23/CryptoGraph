@@ -94,7 +94,7 @@ namespace WindowsFormsApp7
                         FileInfo fInfo = new FileInfo(fName);
                         string name = fInfo.FullName;
                         //Считываем данные из файла
-                        string dataToEncrypt = File.ReadAllText(name);
+                        byte[] dataToEncrypt = File.ReadAllBytes(name);
                         //Зашифровываем данные с помощью ключа AES и сохраняем зашифрованные данные в файл
                         byte[] encryptedData = EncryptAES(dataToEncrypt, myAes.Key, myAes.IV);
                         File.WriteAllBytes(Directory.GetCurrentDirectory() + "\\encryptedData", encryptedData);
@@ -117,15 +117,16 @@ namespace WindowsFormsApp7
             {
                 MessageBox.Show("Не найден файл для расшифровки");
             }
-            try
-            {
-                string decryptedData = DecryptAES(encryptedData, myAes.Key, myAes.IV);
-                File.WriteAllText(Directory.GetCurrentDirectory() + "\\Decrypted.txt", decryptedData);
-            }
-            catch
-            {
-                MessageBox.Show("Ключи AES недействительны");
-            }
+            //try
+            //{
+                //byte [] decryptedData = DecryptAES(encryptedData, myAes.Key, myAes.IV);
+                DecryptAES(encryptedData, myAes.Key, myAes.IV);
+                //File.WriteAllBytes(Directory.GetCurrentDirectory() + "\\Decrypted.txt", decryptedData);
+           // }
+            //catch
+            //{
+            //    MessageBox.Show("Ключи AES недействительны");
+            //}
         }
 
         //=============================================================================================
@@ -133,7 +134,7 @@ namespace WindowsFormsApp7
         //=============================================================================================
 
         //Эта функция выполняет шифрование данных
-        static byte[] EncryptAES(string plainText, byte[] Key, byte[] IV)
+        static byte[] EncryptAES(byte[] plainText, byte[] Key, byte[] IV)
         {
             //Проверяем правильность поданных аргументов
             if (plainText == null || plainText.Length <= 0)
@@ -167,7 +168,7 @@ namespace WindowsFormsApp7
             return encrypted;
         }
         //Эта функция выполняет расшифровку
-        static string DecryptAES(byte[] cipherText, byte[] Key, byte[] IV)
+        static void DecryptAES(byte[] cipherText, byte[] Key, byte[] IV)
         {
             // Проверяем правильность аргументов
             if (cipherText == null || cipherText.Length <= 0)
@@ -177,7 +178,7 @@ namespace WindowsFormsApp7
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("IV");
             //Объявлем переменную для хранения расшифрованного текста
-            string plaintext = null;
+            byte[] plaintext = null;
             //Создаем новый объект AES и задаем ему необходимые параметры
             using (Aes aesAlg = Aes.Create())
             {
@@ -185,20 +186,49 @@ namespace WindowsFormsApp7
                 aesAlg.IV = IV;
                 //Создаем дешифратор для потоковой расшифровки
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-                //Создаем поток для расшифровки
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                using (FileStream inputStream = new FileStream(Directory.GetCurrentDirectory() + "\\Decrypted.txt", FileMode.Open, FileAccess.ReadWrite))
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+
+                        using (CryptoStream cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
                         {
-                            //Считываемрасшифрованные байты из потока и записываем их в переменную
-                            plaintext = srDecrypt.ReadToEnd();
+                            using (MemoryStream memoryStream = new MemoryStream())
+                            {
+                                cryptoStream.CopyTo(memoryStream);
+
+                                inputStream.SetLength(0);
+
+                                memoryStream.Position = 0;
+
+                                memoryStream.CopyTo(inputStream);
+                            }
                         }
                     }
+                    //Создаем поток для расшифровки
+                    //using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                    //{
+                    //using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    //{
+                    //using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    //{
+                    //Считываемрасшифрованные байты из потока и записываем их в переменную
+                    // plaintext = srDecrypt.ReadToEnd();
+                    //plaintext = StreamHelper.ReadToEnd(mystream);
+                    //}
+                    //using (MemoryStream memoryStream = new MemoryStream())
+                    //{
+                    //    csDecrypt.CopyTo(memoryStream);
+                    //    plaintext = memoryStream.ToArray();
+                    //}
+                    //File.WriteAllBytes(Directory.GetCurrentDirectory() + "\\Decrypted.txt", plaintext);
+                        //using (var memoryStream = new MemoryStream())
+                        //{
+                        //csDecrypt.CopyTo(memoryStream);
+                        //   plaintext=memoryStream.ToArray();
+
+                        //}
+                        //plaintext = csDecrypt.ToArray();
                 }
             }
-            return plaintext;
+            //return plaintext;
         }
     }
-}

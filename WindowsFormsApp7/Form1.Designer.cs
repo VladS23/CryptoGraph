@@ -1,4 +1,7 @@
-﻿namespace WindowsFormsApp7
+﻿using System.Windows.Forms;
+using WindowsFormsApp7;
+namespace WindowsFormsApp7
+
 {
     public partial class Form1 : Form
     {
