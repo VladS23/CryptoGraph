@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Text;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp7
@@ -162,7 +162,7 @@ namespace WindowsFormsApp7
                         }
                     }
                 }
-                MessageBox.Show("Файл успешно зашифрован","", MessageBoxButtons.OK);
+                MessageBox.Show("Файл успешно зашифрован", "", MessageBoxButtons.OK);
             }
         }
         //Эта функция расшифровывает
