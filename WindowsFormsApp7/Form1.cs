@@ -184,6 +184,7 @@ namespace WindowsFormsApp7
                             inputStream.SetLength(0);
                             memoryStream.Position = 0;
                             memoryStream.CopyTo(inputStream);
+                            byte[] a=memoryStream.ToArray();
                         }
                     }
                 }
