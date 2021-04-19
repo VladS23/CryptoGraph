@@ -180,13 +180,11 @@ namespace WindowsFormsApp7
                     {
                         using (MemoryStream memoryStream = new MemoryStream())
                         {
-                            cryptoStream.CopyTo(memoryStream);
-
                             inputStream.SetLength(0);
 
                             memoryStream.Position = 0;
-
-                            memoryStream.CopyTo(inputStream);
+                            
+                            cryptoStream.CopyTo(inputStream);
                         }
                     }
                 }
