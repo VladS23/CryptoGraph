@@ -38,9 +38,7 @@ namespace WindowsFormsApp7
             this.ImportAes = new System.Windows.Forms.Button();
             this.Encrypt = new System.Windows.Forms.Button();
             this.Decrypt = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateRSA
@@ -103,16 +101,6 @@ namespace WindowsFormsApp7
             this.Decrypt.UseVisualStyleBackColor = true;
             this.Decrypt.Click += new System.EventHandler(this.Decrypt_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(397, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(360, 302);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -121,8 +109,7 @@ namespace WindowsFormsApp7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 361);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(324, 361);
             this.Controls.Add(this.Decrypt);
             this.Controls.Add(this.Encrypt);
             this.Controls.Add(this.ImportAes);
@@ -132,7 +119,6 @@ namespace WindowsFormsApp7
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "CryptoGraph";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,7 +131,6 @@ namespace WindowsFormsApp7
         private System.Windows.Forms.Button ImportAes;
         private System.Windows.Forms.Button Encrypt;
         private System.Windows.Forms.Button Decrypt;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
